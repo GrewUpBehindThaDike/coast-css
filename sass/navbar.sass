@@ -1,0 +1,66 @@
+@charset "utf-8"
+@import "colors.sass"
+
+.navbar
+  width: 100%
+  overflow: visible
+  padding: 0em
+  display: flex
+  flex-direction: row
+
+.navbar-item,
+.navbar-icon
+  display: flex
+  flex-direction: column
+  text-decoration: none  
+  z-index: 3
+  &.active
+    background-color: rgba($black,0.1)
+  & img
+    height: 22px
+    padding: 0em
+    border-radius: 2px
+
+a.navbar-item,
+a.navbar-icon
+  padding: 0.5em 0.8em
+  &:hover
+    opacity: 0.9
+    cursor: pointer
+    background-color: rgba($black,0.15)
+
+.navbar-menu
+  display: flex
+  flex-grow: 1
+
+.navbar-end
+  display: flex
+  z-index: 1
+
+.navbar-dropdown-trigger
+  display: flex
+  align-items: center
+  flex-grow: 1
+  padding: 0.5em 0.8em
+  &:hover
+    opacity: 0.9
+    cursor: pointer
+    background-color: rgba($black,0.15)
+
+.navbar-dropdown-content
+  display: none
+  padding: 0.2em 0em
+  margin-top: 2.2em
+  font-size: 90%
+
+.navbar-item:hover 
+  & .navbar-dropdown-content
+    display: flex
+    flex-direction: column
+    position: absolute
+    opacity: 1
+  & .navbar-dropdown-trigger
+    opacity: 0.9
+
+.navbar-end .navbar-dropdown-content
+  right: 0em

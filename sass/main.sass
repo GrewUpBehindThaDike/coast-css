@@ -1,0 +1,304 @@
+@charset "utf-8"
+@import "colors.sass"
+
+// font color snippet
+@mixin fontColor($color)
+  color: $color
+  &.is-light
+    color: lightColor($color)
+  &.is-dark
+    color: darkColor($color)
+
+// font colors snippet
+@mixin fontColors()
+  &.is-light
+    color: $white
+  &.is-dark
+    color: $black
+  &.is-grey
+    @include fontColor($grey)
+  &.is-red
+    @include fontColor($red)
+  &.is-green
+    @include fontColor($green)
+  &.is-blue
+    @include fontColor($blue)
+  &.is-orange
+    @include fontColor($orange)
+  &.is-pink
+    @include fontColor($pink)
+
+@mixin gradient($color)
+  &.is-gradient
+    color: fontColor($color)
+    background-color: transparent
+    background-image: linear-gradient(to bottom right, darken($color, 15%), lighten($color, 15%))
+    &.is-transparent
+      color: fontColor(rgba($color, 0.50))
+      background-image: linear-gradient(to bottom right, rgba(darken($color, 15%), 0.30), rgba(lighten($color, 15%), 0.30))
+      &.is-bold
+        color: fontColor(rgba($color, 0.70))
+        background-image: linear-gradient(to bottom right, rgba(darken($color, 15%), 0.70), rgba(lighten($color, 15%), 0.70))
+  &.is-transparent
+    color: fontColor(rgba($color, 0.5))
+    background-color: rgba($color, 0.5)
+    &.is-bold
+      color: fontColor(rgba($color, 0.7))
+      background-color: rgba($color, 0.7)
+
+@mixin color($color)
+  color: fontColor($color)
+  background-color: $color
+  background-image: unset
+  @include gradient($color)
+  &.is-light
+    color: fontColor(lightColor($color))
+    background-color: lightColor($color)
+    @include gradient(lightColor($color))
+  &.is-dark
+    color: fontColor(darkColor($color))
+    background-color: darkColor($color)
+    @include gradient(darkColor($color))
+
+@mixin colors()
+  &.is-light
+    @include color($white)
+  &.is-dark
+    @include color($black)
+  &.is-grey
+    @include color($grey)
+  &.is-red
+    @include color($red)
+  &.is-green
+    @include color($green)
+  &.is-blue
+    @include color($blue)
+  &.is-orange
+    @include color($orange)
+  &.is-pink
+    @include color($pink)
+
+html,
+body
+  height: 100%
+  width: 100%
+
+html
+  line-height: 1.2
+  background-image: url(../images/bg.jpg)
+
+body
+  display: flex
+  flex-direction: column
+  margin: 0
+  font-family: Helvetica, sans-serif
+  overflow: hidden
+  background-image: url(../img/bg.jpg)
+  background-repeat: no-repeat
+  background-size: cover
+  @include colors()
+  
+div,
+  background-color: transparent
+  background-repeat: no-repeat
+  background-size: cover
+  @include colors()
+
+hr
+  border-color: lightColor($grey)
+  border-width: 1px 0px 0px 0px
+  display: flex
+  margin: 0.5em 2em
+
+span,
+label,
+h1,
+h2,
+h3,
+h4,
+h5
+  @include fontColors()
+
+h1,
+h2,
+h3,
+h4,
+h5
+  flex-grow: 1
+  margin: 0
+
+.sidemenu
+  display: flex
+  flex-direction: column
+  min-width: 15%
+
+.sidemenu-label
+  padding: 0.5em
+  font-variant: all-small-caps
+
+.sidemenu ul
+  margin: 0
+  padding: 0
+  flex-grow: 0
+  list-style: none
+
+.sidemenu ul ul li a
+  padding-left: 2em
+
+.sidemenu li
+  display: flex
+  flex-direction: column
+
+.sidemenu li a
+  flex-grow: 1
+  padding: 0.2em 1em
+
+.sidemenu li a.is-2
+  padding-left: 2em
+
+.sidemenu li a.is-3
+  padding-left: 3em
+
+.sidemenu a
+  color: unset
+  text-decoration: none
+
+.sidemenu a.active
+  background-color: rgba($black,0.1)
+
+.sidemenu a:hover
+  cursor: pointer
+  opacity: 0.9
+  background-color: rgba($black,0.15)
+
+.sidemenu-content
+  flex-grow: 1
+  padding: 0.2em
+  display: flex
+  flex-direction: column
+  overflow: auto
+
+.box
+  border-style: solid
+  border-width: 1px
+  border-radius: 10px
+  box-shadow: 5px 5px 10px rgba($grey, 0.50)
+  border-color: rgba($grey, 0.10)
+
+.section
+  margin-top: 5em
+
+.title
+  display: flex
+  align-items: center
+  margin: 0
+  padding: 0.2em 1em
+
+.button
+  flex-grow: 0
+  align-self: center
+  min-width: 6em
+  padding: 0.4em
+  border-width: 0px
+  border-radius: 5px
+  cursor: pointer
+  margin: 0.2em
+  text-decoration: none
+  text-align: center
+  font-size: inherit
+  font-family: inherit
+  line-height: 1.2
+  @include colors()
+  &:hover
+    opacity: 0.9
+  &.is-small
+    width: unset
+    font-size: small
+    min-width: 4em
+
+.button:disabled,
+a.button:not([href])
+  opacity: 0.4
+  cursor: not-allowed
+
+a.button
+  color: unset
+
+.icon,
+.link   
+  text-decoration: none
+  padding: 0em 0.2em
+  @include fontColors()
+
+a.icon:hover   
+  opacity: 0.9
+
+.bold
+  font-weight: bold
+
+.info
+  padding: 0.5em
+  display: flex
+  flex-grow: 1
+  flex-direction: column
+
+.overlay-box   
+  position: absolute  
+  opacity: .8  
+  width: 100%  
+  height: 100%  
+  padding: 5em 0em  
+  text-align: center  
+  left: 0  
+  top: 0  
+
+.overlay-box span   
+  position: absolute  
+  top: 40%  
+  left: 50%  
+  transform: translate(-50%, -50%)  
+  border-width: 0px  
+  border-color: transparent  
+  box-shadow: 0px 0px 5px 5px rgba($grey, 0.50) 
+  padding: 2em 5em  
+  text-align: center  
+  font-weight: bold  
+  font-style: italic  
+  animation-name: example  
+  animation-duration: 1s  
+  animation-iteration-count: infinite
+  background-color: transparent
+  @include colors()
+  
+.overlay-box .content   
+  position: absolute  
+  top: 40%  
+  left: 50%  
+  transform: translate(-50%, -50%)  
+  border-width: 0px  
+  border-color: transparent  
+  padding: 1em 0.5em  
+  text-align: center  
+  font-weight: bold  
+  font-style: italic  
+  background-color: transparent
+
+@keyframes example
+  0%
+    opacity: 1
+  50%
+    opacity: 0.3
+  100%
+    opacity: 1
+
+::-webkit-scrollbar
+  width: 10px
+
+::-webkit-scrollbar-track
+  background: transparent
+
+::-webkit-scrollbar-thumb
+  background: rgba($blue, 0.5)
+
+::-webkit-scrollbar-thumb:hover
+  background: rgba($blue, 0.7)

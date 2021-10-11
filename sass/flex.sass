@@ -1,0 +1,44 @@
+@charset "utf-8"
+@import "colors.sass"
+
+.row,
+.block,
+.container
+  display: flex
+  flex-grow: 1
+  &.is-narrow
+    flex-grow: 0
+  &.is-1
+    flex-grow: 1
+  &.is-2
+    flex-grow: 2
+  &.is-3
+    flex-grow: 3
+  &.is-4
+    flex-grow: 4
+  &.is-5
+    flex-grow: 5
+  &.is-fluid
+    padding: 0em 5em
+  &.scrollable
+    overflow: auto
+
+.row,
+.block,
+  padding: 0
+  flex-wrap: nowrap
+
+.block
+  flex-direction: column
+
+.container
+  overflow: hidden
+
+.is-centered
+  align-items: center
+
+.is-right
+  align-items: flex-end
+
+.is-wrapped
+  flex-wrap: wrap

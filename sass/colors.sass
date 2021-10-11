@@ -1,0 +1,31 @@
+@charset "utf-8"
+
+//https://www.w3schools.com/cssref/css_colors.asp
+
+$white: white
+$black: black
+
+$red: #ff4d4d
+$blue: steelblue
+$green: #40bf79
+$orange: tomato
+$grey: slategrey
+$pink: #FFC0CB
+
+// get light color for given color
+@function lightColor($color)
+  @return lighten($color, 25%)
+
+// get dark color for given color
+@function darkColor($color)
+  @return darken($color, 25%)
+
+// get font color for given background color
+@function fontColor($color)
+  @if lightness($color) >= 51
+    @return $black
+  @else
+    @return $white
+
+@function colors()
+  @return $red, $blue, $green
