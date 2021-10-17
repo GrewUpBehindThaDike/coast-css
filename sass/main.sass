@@ -28,11 +28,28 @@
   &.is-pink
     @include fontColor($pink)
 
+@mixin gradientMulti($color, $color2)
+  background-image: linear-gradient(to bottom right, $color, $color2)
+  &.is-transparent
+    color: fontColor(rgba($color, 0.50))
+    background-image: linear-gradient(to bottom right, rgba($color, 0.30), rgba($color2, 0.30))
+    &.is-bold
+      color: fontColor(rgba($color, 0.70))
+      background-image: linear-gradient(to bottom right, rgba($color, 0.70), rgba($color2, 0.70))
+
 @mixin gradient($color)
   &.is-gradient
     color: fontColor($color)
     background-color: transparent
     background-image: linear-gradient(to bottom right, darken($color, 15%), lighten($color, 15%))
+    &-red
+      @include gradientMulti($color, $red)
+    &-blue
+      @include gradientMulti($color, $blue)
+    &-green
+      @include gradientMulti($color, $green)
+    &-orange
+      @include gradientMulti($color, $orange)
     &.is-transparent
       color: fontColor(rgba($color, 0.50))
       background-image: linear-gradient(to bottom right, rgba(darken($color, 15%), 0.30), rgba(lighten($color, 15%), 0.30))
@@ -167,12 +184,12 @@ h5
   text-decoration: none
 
 .sidemenu a.active
-  background-color: rgba($black,0.1)
+  background-color: rgba($grey,0.3)
 
 .sidemenu a:hover
   cursor: pointer
   opacity: 0.9
-  background-color: rgba($black,0.15)
+  background-color: rgba($grey,0.35)
 
 .sidemenu-content
   flex-grow: 1
@@ -184,7 +201,7 @@ h5
 .box
   border-style: solid
   border-width: 1px
-  border-radius: 10px
+  border-radius: 2px
   box-shadow: 5px 5px 10px rgba($grey, 0.50)
   border-color: rgba($grey, 0.10)
 
@@ -196,6 +213,8 @@ h5
   align-items: center
   margin: 0
   padding: 0.2em 1em
+  text-shadow: 0px 0px 10px
+  text-transform: full-width
 
 .button
   flex-grow: 0
@@ -203,7 +222,7 @@ h5
   min-width: 6em
   padding: 0.4em
   border-width: 0px
-  border-radius: 5px
+  border-radius: 2px
   cursor: pointer
   margin: 0.2em
   text-decoration: none
