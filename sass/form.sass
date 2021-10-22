@@ -9,19 +9,22 @@ form
   display: flex
 
 .field-label
+  display: inline-flex
+  flex-direction: column
   flex-basis: 0
   flex-grow: 1
   flex-shrink: 0
   align-self: center
+  align-items: end
   text-align: right
   color: unset
   padding: 0.1em 2em
   margin-right: 0.5em
 
 .field-content
-  display: flex
+  display: inline-flex
   flex-basis: 0
-  flex-grow: 5
+  flex-grow: 3
   flex-shrink: 1
   align-items: center
   &.is-1
@@ -30,6 +33,10 @@ form
     flex-grow: 2
   &.is-3
     flex-grow: 3
+  &.is-4
+    flex-grow: 4
+  &.is-5
+    flex-grow: 5
 
 .input
   color: unset
