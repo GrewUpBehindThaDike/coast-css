@@ -7,22 +7,23 @@ form
 .field
   padding: 0.2em 0.5em
   display: flex
+  flex-grow: 1
 
 .field-label
-  display: inline-flex
+  display: flex
   flex-direction: column
   flex-basis: 0
   flex-grow: 1
   flex-shrink: 0
   align-self: center
-  align-items: end
+  align-items: flex-end
   text-align: right
   color: unset
   padding: 0.1em 2em
   margin-right: 0.5em
 
 .field-content
-  display: inline-flex
+  display: flex
   flex-basis: 0
   flex-grow: 3
   flex-shrink: 1
@@ -40,16 +41,19 @@ form
 
 .input
   color: unset
-  border-color: unset
   background-color: transparent
   border-width: 0px 0px 1px 0px
-  font-size: 100%
-  padding: 0.5em
+  font-size: inherit
+  padding: 0.1em
   flex-grow: 1
 
 .select
+  color: unset
+  border-radius: 2px
+  background: transparent
+  font-size: inherit
+  padding: 0.1em
   flex-grow: 1
-  width: 100%
 
 .input:focus,
 .textarea:focus
@@ -81,12 +85,6 @@ form
     padding: 0.5em 0.3em
     margin: 0em 0.5em
 
-.label
-  font-weight: bold
-
-label.checkbox,
-label.radio
-  display: flex
-  padding-right: 0.5em
-  align-items: center
-  cursor: pointer
+.checkbox,
+.radio
+    cursor: pointer
